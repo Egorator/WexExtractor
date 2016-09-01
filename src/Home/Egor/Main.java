@@ -24,7 +24,7 @@ public class Main {
     }
 
     public static void saveToFile(byte[] data, int dataPos, int dataLength, int fileNumber) throws IOException {
-        String filePath = String.format("D:\\3 курс\\ОС\\Лекции\\out\\%d.zip", fileNumber);
+        String filePath = String.format("/home/volkov/workspace/WexExtractor/out/%d.zip", fileNumber);
         Path path = Paths.get(filePath);
         byte[] dataToSave = Arrays.copyOfRange(data, dataPos, dataPos + dataLength);
         Files.write(path, dataToSave);
@@ -35,7 +35,7 @@ public class Main {
     }
 
     public static void doEverything() throws IOException {
-        Path path = Paths.get("D:/3 курс/ОС/Лекции/T1-1_osn_concept.wex");
+        Path path = Paths.get("/home/volkov/downloads/1.wex");
         byte[] data = Files.readAllBytes(path);
         int fileNumber = 0;
         for (int i = 0; i < data.length - 3; i++) {
