@@ -1,7 +1,5 @@
 package Home.Egor;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -32,15 +30,18 @@ public class Main {
         Files.write(path, dataToSave);
     }
 
+    public static int getZipFileLength(byte[] data, int dataPos) {
+        return 20;
+    }
+
     public static void doEverything() throws IOException {
         Path path = Paths.get("D:/3 курс/ОС/Лекции/T1-1_osn_concept.wex");
         byte[] data = Files.readAllBytes(path);
-        //System.out.printf("%02X %02X ", data[0], data[1]);
         int fileNumber = 0;
         for (int i = 0; i < data.length - 3; i++) {
             if (!zipSignatureFound(data, i))
                 continue;
-            int length = 10;
+            int length = getZipFileLength(data, i);
             fileNumber++;
             saveToFile(data, i, length, fileNumber);
         }
